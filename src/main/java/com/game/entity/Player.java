@@ -1,7 +1,6 @@
 package com.game.entity;
 
 import jakarta.persistence.*;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Date;
 
@@ -9,6 +8,7 @@ import java.util.Date;
 @Table(schema = "rpg", name = "player")
 public class Player {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
 

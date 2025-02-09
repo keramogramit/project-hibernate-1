@@ -20,14 +20,16 @@ public class PlayerRepositoryDB implements IPlayerRepository {
 
     public PlayerRepositoryDB() {
         Properties properties = new Properties();
-        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
         properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
         properties.put(Environment.URL, "jdbc:mysql://localhost:3306/rpg");
         properties.put(Environment.USER, "root");
         properties.put(Environment.PASS, "mysql");
         properties.put(Environment.HBM2DDL_AUTO, "update");
 
-        sessionFactory = new Configuration().addAnnotatedClass(Player.class).addProperties(properties).buildSessionFactory();
+        sessionFactory = new Configuration().addProperties(properties)
+                .addAnnotatedClass(Player.class)
+                .buildSessionFactory();
     }
 
     @Override
